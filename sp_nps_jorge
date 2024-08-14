@@ -1,6 +1,6 @@
 --select * from f_nps_V2 where nome like '%jorge%'
 
-/*SELECT nome,
+SELECT nome,
 COUNT(*) AS nota
 FROM f_nps_v2
 GROUP BY nome*/
