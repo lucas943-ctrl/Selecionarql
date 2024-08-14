@@ -16,10 +16,10 @@ SELECT
 	 [nome]
 	,[id selecionar]
 	,[nota_media] = AVG(nota)
-	,[promotores] = SUM( iif(classificação = 'Promotores',1,0))
-	,[detratores] = SUM( IIF(classificação = 'Detratores',1,0))
-	,[avaliações] = COUNT(*) 
-	,[NPS] = CAST(CAST(SUM( iif(classificação = 'Promotores',1,0)) - SUM( IIF(classificação = 'Detratores',1,0)) AS DECIMAL) / CAST(COUNT(*)AS DECIMAL) * 100 AS INT)
+	,[promotores] = SUM( iif(classificaÃ§Ã£o = 'Promotores',1,0))
+	,[detratores] = SUM( IIF(classificaÃ§Ã£o = 'Detratores',1,0))
+	,[avaliaÃ§Ãµes] = COUNT(*) 
+	,[NPS] = CAST(CAST(SUM( iif(classificaÃ§Ã£o = 'Promotores',1,0)) - SUM( IIF(classificaÃ§Ã£o = 'Detratores',1,0)) AS DECIMAL) / CAST(COUNT(*)AS DECIMAL) * 100 AS INT)
 --select *
 from f_nps_v2
 WHERE NOME LIKE @nome
