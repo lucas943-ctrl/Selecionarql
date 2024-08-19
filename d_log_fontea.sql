@@ -23,7 +23,7 @@ BEGIN
 	WHILE @data_inicio <= @data_limite
 	BEGIN
 
-		SET @duracao = (ABS(CHECKSUM(NEWID())) % 350) + 0
+		SET @duracao = (ABS(CHECKSUM(NEWID())) % 300) + 0
 		SET @data_fim = DATEADD(MINUTE,@duracao, @data_inicio)
 
 		INSERT INTO d_log_fontea VALUES (@id_brother,'log',@data_inicio, @data_fim)
@@ -32,9 +32,9 @@ BEGIN
 		SET @data_inicio = @data_fim
 		SET @data_fim = DATEADD(MINUTE,@duracao, @data_inicio)
 
-		INSERT INTO d_log_fontea VALUES (@id_brother,'pausa almoço', @data_inicio, @data_fim)
+		INSERT INTO d_log_fontea VALUES (@id_brother,'pausa almoÃ§o', @data_inicio, @data_fim)
 
-		SET @duracao = (ABS(CHECKSUM(NEWID())) % 350) + 0
+		SET @duracao = (ABS(CHECKSUM(NEWID())) % 300) + 0
 		SET @data_inicio = @data_fim
 		SET @data_fim = DATEADD(MINUTE,@duracao, @data_inicio)
 
