@@ -20,7 +20,8 @@ CREATE TABLE d_log_fonteb(
 	 ,fim datetime);
 
 CREATE TABLE f_log(
-	  id_usuario varchar(max)
+	  fonte varchar(max)
+	 ,id_usuario varchar(max)
 	 ,evento varchar(max)
 	 ,inicio datetime
 	 ,fim datetime
