@@ -1,3 +1,5 @@
+CREATE DATABASE db_dev
+
 CREATE TABLE d_calendario(
 	 datahora datetime
 	,data date
