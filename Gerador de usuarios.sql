@@ -2,7 +2,7 @@ delete from d_usuarios
 
 GO
 
-CREATE OR ALTER PROCEDURE sp_contador AS
+CREATE OR ALTER PROCEDURE s_usuarios AS
 
 DECLARE @contador INT = 1;
 DECLARE @minimo VARCHAR(10);
@@ -31,7 +31,7 @@ END;
 
 GO
 
-EXECUTE sp_contador
+EXECUTE s_usuarios
 
 GO
 
