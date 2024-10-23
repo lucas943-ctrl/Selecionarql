@@ -17,61 +17,53 @@ WHERE nome <> TRANSLATE(nome, N'ÁÀÂÃÄÅàáâãäåĀāąĄæÆÇçćĆčČ
 	FROM f_mop_historico
 
 */
-go
-
-
---CREATE OR ALTER FUNCTION ToProperCase(@string VARCHAR(255)) RETURNS VARCHAR(255) AS
-DECLARE @string VARCHAR(MAX) = 'Mateus Morais De Jesus'
-
-BEGIN
-  DECLARE @i INT           -- index
-  DECLARE @l INT           -- input length
-  DECLARE @c NCHAR(4)      -- current char
-  DECLARE @f INT           -- first letter flag (1/0)
-  DECLARE @o VARCHAR(255)  -- output string
-  DECLARE @w TABLE (w NCHAR(4))   -- characters considered as white space
-  DECLARE @p INT
-  
-
-
-  SET @String = LOWER(@String)
-
-  INSERT @w (w) VALUES('['),(CHAR(13)),(CHAR(10)),(CHAR(9)),(CHAR(160)),(' '),(' de '),(']');
-  --SET @w = ' de '
-  SET @i = 1
-  SET @l = LEN(@string)
-  SET @f = 1
-  SET @o = ''
-
-  WHILE @i <= @l
-  BEGIN
-    SET @c = SUBSTRING(@string, @i, 4)
-	--SELECT @c
-
-    IF @f = 1 
-    BEGIN
-     SET @o = @o + UPPER(LEFT(@c,1)) --+ RIGHT(@c,3)
-     SET @f = 0
-    END
-    ELSE
-    BEGIN
-     SET @o = @o + LEFT(@c,1)
-    END
-
-    SET @p = (SELECT TOP(1) LEN(w) FROM @w WHERE w = LEFT(@c, LEN(w))) 
-
-	IF @p IS NOT NULL BEGIN 
-		SET @f = 1
-		SET @i = @i + @p
-	END
-	ELSE
-	BEGIN
-		SET @i = @i +@p
-	END
-  END
-
-  --RETURN @o
-  SELECT @o
-END
 GO
---SELECT TOP(2) [dbo].ToProperCase([Nome]) From [db_serasa_producao].[dbo].f_mop_historico
+
+CREATE or alter FUNCTION [dbo].[fx.PriMaiuscula_teste](@StrValue AS VARCHAR(150))
+RETURNS VARCHAR(150)
+AS
+  BEGIN
+      DECLARE @AUX AS VARCHAR(151)
+      DECLARE @TEMP AS VARCHAR(100)
+      DECLARE @TEMP2 AS VARCHAR(100)
+      DECLARE @RESULT AS VARCHAR(150)
+      DECLARE @Y AS INT
+
+      SET @Y = 0
+      SET @AUX = Rtrim(Ltrim(@StrValue)) + ' '
+      SET @RESULT = ''
+
+      WHILE @Y < 1
+        BEGIN
+            SET @TEMP = Substring(@AUX, 1, Charindex(' ', @AUX))
+            SET @AUX = Substring(@AUX, Charindex(' ', @AUX) + 1, Len(@AUX))
+            SET @TEMP2 = Upper(Substring(@TEMP, 1, 1)) + Lower(Substring(@TEMP, 2, Len(@TEMP)))
+
+            IF Charindex(CHAR(39), @TEMP2) <> 0
+              BEGIN
+                  SET @TEMP2 = Substring(@TEMP2, 1, Charindex(CHAR(39), @TEMP2)) 
+                  + Upper(Substring(Substring(@TEMP2, Charindex(CHAR(39), @TEMP2) + 1, Len(@TEMP2)), 1, 1)) 
+                  + Lower(Substring(Substring(@TEMP2, Charindex(CHAR(39), @TEMP2) + 1, Len(@TEMP2)), 2, Len(@TEMP)))
+              END
+
+            IF Isnull(Charindex(' ', @AUX), 0) = 0
+              BEGIN
+                  SET @Y = 2
+              END
+
+            SET @RESULT = @RESULT + @TEMP2
+        END
+
+      SET @RESULT = REPLACE(@RESULT, ' E ', ' e ')
+      SET @RESULT = REPLACE(@RESULT, ' DE ', ' de ')
+      SET @RESULT = REPLACE(@RESULT, ' DA ', ' da ')
+      SET @RESULT = REPLACE(@RESULT, ' DO ', ' do ')
+      SET @RESULT = REPLACE(@RESULT, ' DAS ', ' das ')
+      SET @RESULT = REPLACE(@RESULT, ' DOS ', ' dos ')
+
+      RETURN @RESULT
+  END
+  go
+
+select [dbo].[fx.PriMaiuscula_teste](Nome) from dbo.teste
+
