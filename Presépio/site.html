@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/site.css"<link>
+		<link src="JS/site.js" defer> </script>
+		<script type="text/javascript" src="site.js"></script>
+	</head>
+
+	<header>
+        <h1>Decreep</h1>
+		<nav>
+        
+            <a href="#home">Início</a>
+            <a href="https://centraldofuncionario.com.br/22359/incluir-ponto">Sobre</a>
+            <a href="#contato">Contato</a>
+        
+    </nav>
+    </header>
+    
+    
+
+	<body  class="corpo">
+		<div>
+			<br>
+			<div class="janela" id="objetos">
+
+
+			</div>
+				
+			</div>
+
+			<script type="text/javascript" src="js/site.js"></script>
+	</div>
+	<script>
+
+	let divobjetos = document.querySelector("#objetos")
+
+	fetch("https://e299a1.com/decree/api?Key=graph.json")	
+	.then(response => response.json() )
+	.then(objetos => {
+		objetos.forEach(obj => {
+			divobjetos.innerHTML += `<div class="objeto"> <h3 class="titulo-2"> ${obj.name}:</h3><br>
+									Tipo: ${obj.type}<br>
+									
+									<br>
+									<span id="oculto"></span><span id="mais"> 
+									
+
+									Banco: ${obj.database}<br>
+									Schema: ${obj.schema}<br>
+									Código: ${obj.code}<br>
+									Dependencia: ${obj.depended_by} <br>
+									Dependido: ${obj.depends_on} </span>
+									<button onclick="Expandir()" id="btnExpandir">Expandir</button></div>` 
+		})
+	})
+	
+	</script>
+	
+</body>
+
+</html>
