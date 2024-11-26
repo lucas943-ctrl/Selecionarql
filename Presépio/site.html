@@ -2,7 +2,7 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="css/site.css"<link>
+		<link rel="stylesheet" href="css/site.css"><link>
 		<link src="JS/site.js" defer> </script>
 		<script type="text/javascript" src="site.js"></script>
 	</head>
@@ -40,19 +40,17 @@
 	.then(response => response.json() )
 	.then(objetos => {
 		objetos.forEach(obj => {
-			divobjetos.innerHTML += `<div class="objeto"> <h3 class="titulo-2"> ${obj.name}:</h3><br>
-									Tipo: ${obj.type}<br>
-									
-									<br>
-									<span id="oculto"></span><span id="mais"> 
-									
-
-									Banco: ${obj.database}<br>
-									Schema: ${obj.schema}<br>
-									Código: ${obj.code}<br>
-									Dependencia: ${obj.depended_by} <br>
-									Dependido: ${obj.depends_on} </span>
-									<button onclick="Expandir()" id="btnExpandir">Expandir</button></div>` 
+			divobjetos.innerHTML += `<div class="objeto" id="${encodeURIComponent("objeto-" + obj.name)}">
+					<button onclick="Expandir('${encodeURIComponent("ocultar-" + obj.name)}','${encodeURIComponent("mais-" + obj.name)}')" 						id="btnExpandir">${obj.name}</button><br>
+					Tipo: ${obj.type}<br>
+					<span id="${encodeURIComponent("ocultar-" + obj.name)}"></span>
+					<span class="mais" id="${encodeURIComponent("mais-" + obj.name)}"> 
+					Banco: ${obj.database}<br>
+					Schema: ${obj.schema}<br>
+					Código: ${obj.code}<br>
+					Dependencia: ${obj.depended_by} <br>
+					Dependido: ${obj.depends_on} </span>
+					</div>` 
 		})
 	})
 	
