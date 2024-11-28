@@ -7,20 +7,22 @@
 		<script type="text/javascript" src="site.js"></script>
 	</head>
 
-	<header>
-        <h1>Decreep</h1>
-		<nav>
-        
-            <a href="#home">Início</a>
-            <a href="https://centraldofuncionario.com.br/22359/incluir-ponto">Sobre</a>
-            <a href="#contato">Contato</a>
-        
-    </nav>
-    </header>
     
     
 
 	<body  class="corpo">
+
+	<header class="header">
+        <h1>Decreep</h1>
+		<nav>
+        
+            <a class="nav" href="#home">Início</a>
+            <a class="nav" href="https://centraldofuncionario.com.br/22359/incluir-ponto">Sobre</a>
+            <a class="nav" href="#contato">Contato</a>
+        
+		</nav>
+    </header>
+
 		<div>
 			<br>
 			<div class="janela" id="objetos">
@@ -40,17 +42,29 @@
 	.then(response => response.json() )
 	.then(objetos => {
 		objetos.forEach(obj => {
-			divobjetos.innerHTML += `<div class="objeto" id="${encodeURIComponent("objeto-" + obj.name)}">
-					<button onclick="Expandir('${encodeURIComponent("ocultar-" + obj.name)}','${encodeURIComponent("mais-" + obj.name)}')" 						id="btnExpandir">${obj.name}</button><br>
-					Tipo: ${obj.type}<br>
-					<span id="${encodeURIComponent("ocultar-" + obj.name)}"></span>
-					<span class="mais" id="${encodeURIComponent("mais-" + obj.name)}"> 
-					Banco: ${obj.database}<br>
-					Schema: ${obj.schema}<br>
-					Código: ${obj.code}<br>
-					Dependencia: ${obj.depended_by} <br>
-					Dependido: ${obj.depends_on} </span>
-					</div>` 
+			divobjetos.innerHTML += `
+									<div>
+										<div class="objeto" id="${encodeURIComponent("objeto-" + obj.name)}">
+											<button onclick="Expandir('${encodeURIComponent("ocultar-" + obj.name)}','${encodeURIComponent("modal-" + obj.name)}')" 
+											id="btnExpandir">${obj.name}</button><br>
+											Tipo: ${obj.type}<br>
+										</div>
+											
+										<div  class="janela-modal" id="${encodeURIComponent("modal-" + obj.name)}">
+											<div class="modal">
+												<button class="btn-fechar" id="fechar">X</button>
+												Nome: ${obj.name}<br>
+												Tipo: ${obj.type}<br>
+												Banco: ${obj.database}<br>
+												Schema: ${obj.schema}<br>
+												Código: ${obj.code}<br>
+												Dependencia: ${obj.depended_by} <br>
+												Dependido: ${obj.depends_on} 
+											</div>
+										</div>
+									</div>
+										` 
+									
 		})
 	})
 	

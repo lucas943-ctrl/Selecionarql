@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-header {
+body{
+    background:#2f2841;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
     background-color: #514869;
     color: #fff;
-    padding: 20px 20px;
     display: flex;
     color: #0f8;
     font-weight: 200000px;
@@ -14,6 +18,30 @@ header {
     overflow: hidden;
     text-overflow: ellipsis; 
     white-space: nowrap;
+	justify-content: space-between;
+	align-items: flex-end;
+	padding-right: 20px;
+	padding-bottom: 10px;	
+}
+
+a:link {
+   color: #0f8;
+   font-size: 15pt;
+}
+
+a:visited {
+   color: #0f8;
+   font-size: 15pt;
+}
+
+a:hover {
+    color: #000000;
+	   font-size: 16pt;
+}
+
+a:active {
+   color: #0f8;
+   font-size: 15pt;
 }
 
 .titulo-2{
@@ -26,20 +54,15 @@ header {
     
 }
 
-.corpo{
-    width: 100%;
-    display: box;
-    padding: 30px 35px;
-    background:#2f2841;
-    border-radius: 20px;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-}
 .janela{
     display: flex ;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 60px;
+    justify-content: space-around;
+    width: 100%;
+    
+    margin: 0;
+    
 
 }
 
@@ -73,11 +96,45 @@ header {
     background-color: #0f8;
 }
 
-.mais{
-display: none
+.modal{
+width: 60%;
+min-width: 450px;
+min-height: 200px;
+background-color: #2f284196;
+padding: 50px;
+border-radius: 20px;
+
+
 }
 
 
+.janela-modal{
+width: 100vw;
+height: 100vh;
+display: none;
+position: fixed;
+left: 0;
+top: 0;
+align-items: center;
+justify-content: center;
+z-index: 999;
+backdrop-filter:blur(10px);
+}
+
+.btn-fechar{
+position: absolute;
+top: -px;
+rigth: -5px
+width: 30px;
+height: 30px;
+border-radius: 50%;
+border: 0;
+background-color: 2f2841;
+collor: 0f8;
+font-size: 20px;
+	
+	
+}
 
 .msg-erro{
 text-align: center;
