@@ -6,6 +6,8 @@ body{
 }
 
 .header {
+	position: sticky;
+	top: 0;
     background-color: #514869;
     color: #fff;
     display: flex;
@@ -23,6 +25,7 @@ body{
 	padding-right: 20px;
 	padding-bottom: 10px;	
 }
+
 
 a:link {
    color: #0f8;
@@ -96,18 +99,6 @@ a:active {
     background-color: #0f8;
 }
 
-.modal{
-width: 60%;
-min-width: 450px;
-min-height: 200px;
-background-color: #2f284196;
-padding: 50px;
-border-radius: 20px;
-
-
-}
-
-
 .janela-modal{
 width: 100vw;
 height: 100vh;
@@ -119,20 +110,43 @@ align-items: center;
 justify-content: center;
 z-index: 999;
 backdrop-filter:blur(10px);
+
+}
+
+.cabMd{
+	display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	
+}
+
+.modal{
+width: 60%;
+min-width: 450px;
+min-height: 200px;
+background-color: #2f2841;
+padding: 10px;
+border-radius: 20px;
+color: #f0ffffde;
+}
+
+.Tituloverde{
+    color: #0f8;
+    font-size: 1.1em;
+	
 }
 
 .btn-fechar{
-position: absolute;
-top: -px;
-rigth: -5px
 width: 30px;
 height: 30px;
 border-radius: 50%;
 border: 0;
 background-color: 2f2841;
 collor: 0f8;
-font-size: 20px;
-	
+font-size: 20px;	
 	
 }
 

@@ -52,15 +52,35 @@
 											
 										<div  class="janela-modal" id="${encodeURIComponent("modal-" + obj.name)}">
 											<div class="modal">
-												<button class="btn-fechar" id="fechar">X</button>
-												Nome: ${obj.name}<br>
-												Tipo: ${obj.type}<br>
-												Banco: ${obj.database}<br>
-												Schema: ${obj.schema}<br>
-												Código: ${obj.code}<br>
-												Dependencia: ${obj.depended_by} <br>
-												Dependido: ${obj.depends_on} 
+												<div class="cabMd"> 
+													<span><span class="Tituloverde" >Nome: </span> ${obj.name}</span>
+													<button onclick="Expandir('${encodeURIComponent("ocultar-" + obj.name)}','${encodeURIComponent("modal-" + obj.name)}')" class="btn-fechar" id="fechar">X</button>
+												</div>
+												<div>		
+													<span class="Tituloverde" >Tipo: </span> ${obj.type}<br>
+													<span class="Tituloverde" >Banco: </span>${obj.database}<br>
+													<span class="Tituloverde" >Schema: </span>${obj.schema}<br>
+													<span class="Tituloverde" >Código: </span>${obj.code}<br>
+													<span class="Tituloverde" >Dependencia: </span>${obj.depended_by} <br>
+													<span class="Tituloverde" >Dependido: </span>${obj.depends_on} 
+												</div>
 											</div>
+											
+											<div class="modal">
+												<div class="cabMd"> 
+													<span><span class="Tituloverde" >Nome: </span> ${obj.name}</span>
+													<button onclick="Expandir('${encodeURIComponent("ocultar-" + obj.name)}','${encodeURIComponent("modal-" + obj.name)}')" class="btn-fechar" id="fechar">X</button>
+												</div>
+												<div>		
+													<span class="Tituloverde" >Tipo: </span> ${obj.type}<br>
+													<span class="Tituloverde" >Banco: </span>${obj.database}<br>
+													<span class="Tituloverde" >Schema: </span>${obj.schema}<br>
+													<span class="Tituloverde" >Código: </span>${obj.code}<br>
+													<span class="Tituloverde" >Dependencia: </span>${obj.depended_by} <br>
+													<span class="Tituloverde" >Dependido: </span>${obj.depends_on} 
+												</div>
+											</div>
+											
 										</div>
 									</div>
 										` 

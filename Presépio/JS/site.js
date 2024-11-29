@@ -9,7 +9,7 @@ function Expandir(ocultarid, maisid){
 	} else{
 		maisTexto.style.display="none";
 		
-}
+
 }
 
 
